@@ -1,7 +1,8 @@
 
-package com.tiendapepe.Tiendapepe.dto.request;
+package dto.request;
 
 import com.tiendapepe.Tiendapepe.exception.ValidacionException;
+
 import java.util.List;
 
 public class VentaRequestDTO {

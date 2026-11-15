@@ -12,7 +12,6 @@ import java.util.List;
 
 @Component
 public class CalculadoraVenta {
-
     private static final double TASA_IGV = 0.18;
     private static final double UMBRAL_DESCUENTO = 500.00;
     private static final double TASA_DESCUENTO = 0.10;
@@ -36,18 +35,15 @@ public class CalculadoraVenta {
 
         subtotalGeneral = redondear(subtotalGeneral);
 
-        // Descuento de 10% si supera S/ 500 antes del IGV
         double descuento = 0.0;
         if (subtotalGeneral > UMBRAL_DESCUENTO) {
             descuento = redondear(subtotalGeneral * TASA_DESCUENTO);
         }
         double subtotalConDescuento = redondear(subtotalGeneral - descuento);
 
-        // IGV (18%) sobre subtotal con descuento
         double igv = redondear(subtotalConDescuento * TASA_IGV);
         double totalConIgv = redondear(subtotalConDescuento + igv);
 
-        // Comisión por tarjeta (3%) si aplica
         double comisionTarjeta = 0.0;
         if ("TARJETA".equals(metodoPago)) {
             comisionTarjeta = redondear(totalConIgv * TASA_COMISION);
@@ -69,8 +65,6 @@ public class CalculadoraVenta {
     }
 
     private double redondear(double valor) {
-        return BigDecimal.valueOf(valor)
-                .setScale(2, RoundingMode.HALF_UP)
-                .doubleValue();
+        return BigDecimal.valueOf(valor).setScale(2, RoundingMode.HALF_UP).doubleValue();
     }
 }
