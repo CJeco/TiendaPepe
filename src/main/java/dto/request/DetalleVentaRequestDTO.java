@@ -1,6 +1,6 @@
-package com.tiendapepe.Tiendapepe.dto.request;
+package dto.request;
 
-import com.tiendapepe.Tiendapepe.exception.ValidacionException;
+import exception.ValidacionException;
 
 public class DetalleVentaRequestDTO {
     private String producto;
@@ -19,7 +19,6 @@ public class DetalleVentaRequestDTO {
         }
     }
 
-    // Getters y Setters
     public String getProducto() { return producto; }
     public void setProducto(String producto) { this.producto = producto; }
     public int getCantidad() { return cantidad; }
