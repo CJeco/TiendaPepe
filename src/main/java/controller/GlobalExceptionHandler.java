@@ -1,21 +1,18 @@
 package controller;
 
 import exception.ValidacionException;
+import dto.response.ErrorResponseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
     @ExceptionHandler(ValidacionException.class)
-    public ResponseEntity> handleValidacionException(ValidacionException ex) {
-        Map<String, String> error = new HashMap<>();
-        error.put("error", "Validación fallida");
-        error.put("mensaje", ex.getMessage());
+    public ResponseEntity<ErrorResponseDTO> handleValidacionException(ValidacionException ex) {
+        ErrorResponseDTO error = new ErrorResponseDTO("Validación fallida", ex.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 }
