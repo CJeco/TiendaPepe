@@ -1,7 +1,7 @@
 
 package dto.request;
 
-import com.tiendapepe.Tiendapepe.exception.ValidacionException;
+import exception.ValidacionException;
 
 import java.util.List;
 
